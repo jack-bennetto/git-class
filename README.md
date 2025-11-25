@@ -1,3 +1,5 @@
+# Git class
+
 ## Set up Github repo
 
 First, one of each pair (the one with less experience in git) should set up a new repository in GitHub for you both to work in, while the other watches and helps.
