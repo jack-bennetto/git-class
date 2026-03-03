@@ -1,6 +1,24 @@
 # Git class
 
-Welcome to Introductory Git! This is a paired assingment; ideally it should be done in person, side by side, but can be done remotely if necessary with each person sharing their screen. More communication is better: talk with your partner about what you are doing and thinking, and reach out to the instructor if available if you're stuck. At minimum, you should make it to the beginning of the "Merge conflicts" section, but try to complete as much as you can. Feel free to play around and experiment; you really can't break anything.
+Welcome to Introductory Git! This is a paired assingment. Ideally it should be done in person, side by side, but can be done remotely if necessary with each person sharing their screen. More communication is better: talk with your partner about what you are doing and thinking, and reach out to the instructor if available if you're stuck. At minimum, you should make it to the beginning of the "Merge conflicts" section, but try to complete as much as you can. Feel free to play around and experiment; you really can't break anything.
+
+## Learning objectives
+
+You should have already watched the video that goes with this lab. While it isn't completely necessary, it should help you understand some of the yet concepts around git and version control.
+
+After watching the video and completing this lab, you should be able to
+
+ * Explain the purpose of git, its role in collaborative development and how it relates to GitHub
+ * Define the basic concepts in git, including repository, commit, index, merge, branch
+ * Use git on the command line to:
+   * clone a repository
+   * add and modify files
+   * commit and push changes
+   * understand the status and history of a repository
+   * Resolve simple merge conflicts
+ * Collaborate effectively using git
+
+After the lab review these objectives, and ask the instructor if there are any you don't feel you can do.
 
 ## Set up Github repo
 
