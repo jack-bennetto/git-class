@@ -1,5 +1,7 @@
 # Git class
 
+Welcome to Introductory Git! This is a paired assingment; ideally it should be done in person, side by side, but can be done remotely if necessary with each person sharing their screen. More communication is better: talk with your partner about what you are doing and thinking, and reach out to the instructor if available if you're stuck. At minimum, you should make it to the beginning of the "Merge conflicts" section, but try to complete as much as you can. Feel free to play around and experiment; you really can't break anything.
+
 ## Set up Github repo
 
 First, one of each pair (the one with less experience in git) should set up a new repository in GitHub for you both to work in, while the other watches and helps.
@@ -145,7 +147,7 @@ You can switch to that branch with
 
 `git switch feature-foo`
 
-and switch back to main with
+and switch back to `main` with
 
 `git switch main`
 
