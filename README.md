@@ -11,7 +11,6 @@ First, one of each pair (the one with less experience in git) should set up a ne
 5. Your partner should have an email invitation to join the repository. They should accept the invitation.
 
 
-
 ## Clone the repo locally
 
 Both of you should clone the repo onto your local computer. You will both make changes locally and push to the remote repo on GitHub.
@@ -23,10 +22,10 @@ cd git-class
 ```
 and clone the repository you created locally, using the URL of the repository, e.g.,
 ```sh
-git clone https://github.com/my-github-username/our-project
-mkdir our-project
+git clone https://github.com/*my-github-username*/*our-project*
+cd *our-project*
 ```
-changing `my-github-username` and `our-project`
+changing `*my-github-username*` and `*our-project*`
 
 Open up VS Code from that directory
 ```sh
@@ -44,14 +43,14 @@ git status
 ```
 in the terminal. This is *the most frequent command* you should run; do this after every other command. Discuss what the output means with your partner.
 
-You're going to start by writing a story together. One of you should create a directory in the repo called `stories` and great a story in that directory called `story.md`. Type in the beginning of a story, either a work item or (if you're feeling creative) a fairy tale, and save it.
+You're going to start by writing a story together. One of you should create a directory in the repo called `stories` and creat a story in that directory called `story.md`. Type in the beginning of a story, either a work item or (if you're feeling creative) a fairy tale, and save it.
 
 Enter `git status` again. Discuss with your partner what has changed.
 
 To **stage** the change (sometimes referred to as "adding it to the **index**") run
 
 ```sh
-git add *story.md*
+git add story.md
 ```
 Now run `git status` again and discuss what you see with your partner.
 
@@ -60,7 +59,7 @@ To commit the change and give it a description, run
 ```sh
 git commit -m "added an initial story"
 ```
-Note that if you forget the `-m` git will open a text editor for you to write your commit message. Try to avoid that.
+Note that if you forget the `-m` git will open a text editor you might not understand for you to write your commit message. Try to avoid that.
 
 You ran `git status` and discussed it with your partner, right? I'm going to trust you to remember it from now on.
 
@@ -101,13 +100,15 @@ Repeat this exercise a few more times each until you are both comfortable. As yo
 
 ## Merge conflicts
 
-So far we've been conflict avoidant, having each person pull changes before making their own. This time, have both of you make changes at the same time. The first one to push will be able to successfully; the second will get an error
+So far we've been conflict avoidant, having each person pull changes before making their own. This time, both of you make should make changes at the same time. The two of you should make changes to different files (to make it easier this first time), add, commit, and push them.
 
-```
-(error message)
-```
+The first one to push will be able to successfully; the second will get an error.
 
-To resolve this, you'll need to do `git pull` to bring your partner's changes to your computer. Assuming your changes were made it different files, the merge will get trivial. You'll need to do `git commit` again, which create another commit on your computer that contains both changes. This "merge commit" has two parents: your previous commit and the commit that your partner created.
+To resolve this, you'll need to do `git pull` to bring your partner's changes to your computer. The first time you do that it might ask you about a how to reconcile divergent branches; you probably want the *merge* option (`git config pull.rebase false`) and then do `git pull` again.
+
+Assuming your changes were made it different files, the merge will get trivial. Well, mostly: it will put you in an editor where you can edit the default message, but probably you just want to save and exit. If the editor is `vim` you'll want to hit the ESC key, then type `:x`, then the return key. As you might imagine, "how do i exit vim?" is a common question on many computer forums.
+
+That will create a new commit that contains both changes. This "merge commit" has two parents: your previous commit and the commit that your partner created. Sometimes when doing a merge you'll have to do `git commit` explicitly, but since this is a simple merge it does it automatically.
 
 Once that is done, run `git push` to push the merged change. Your partner should to `git pull` to bring the merged change to their computer.
 
@@ -123,8 +124,57 @@ Repeat this in the other order, so your partner has to do a merge.
 
 ## Changes to the same file
 
-Finally, both of you should make changes to the same file, and add, commit, and push the changes. Make changes to different areas of the file so they don't overlap. The resolution will be more complicated; follow advice it `git status` and in the changed file in VS Code.
+Next, both of you should make changes to the same file, and add, commit, and push the changes. For the first attempt, make them to different areas of the file, but have the other person push first so you can both practice. The experience should be the same, and it should merge the changes automatically.
 
+Finally, make changes that overlap. As long as the changes are to different areas of the file, the `git pull` will give an error, something like
+
+```Auto-merging README.md
+CONFLICT (content): Merge conflict in story.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+You looked at the result of `git status`, right? You'll need to fix the conflict manually and run `git add` on that file, and `git commit` again. If you're confused on this look at the message in `git status`. Git has added a bunch of stuff to the file showing the changes; if you open it up in VS Code it should help you with the merging.
+
+
+## Optional: branches
+
+If you have time, you should experiment with branches. To create a branch, do something like
+
+`git branch feature-foo`
+
+You can switch to that branch with
+
+`git switch feature-foo`
+
+and switch back to main with
+
+`git switch main`
+
+If you look at `git log` you'll notice they are both pointing to the same commit. If you add a new commit from one of those branches, it will affect one and not the other. Verify all this with `git status`, `git log`, and `git log --oneline --graph`.
+
+If you push a branch for the first time you'll get a message like
+
+```
+fatal: The current branch foo has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin feature-foo
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+```
+
+Do what it tells you to do.
+
+To merge branch `feature-foo` into `main` do
+
+```
+git switch main
+git merge feature-foo
+```
+This will move `main` to a new commit that contains all the changes that were made to `feature-foo`. Note you may have to resolve some conflicts.
+
+Continue to explore with your partner, looking at how all of the commands affect the repos.
+You can merge a branch into another with something
 
 
 
