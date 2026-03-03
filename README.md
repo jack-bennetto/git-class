@@ -9,26 +9,27 @@ You should have already watched the video that goes with this lab. While it isn'
 After watching the video and completing this lab, you should be able to
 
  * Explain the purpose of git, its role in collaborative development and how it relates to GitHub
- * Define the basic concepts in git, including repository, commit, index, merge, branch
+ * Define the basic concepts in git, including **repository**, **commit**, **index**, **merge**, and **branch**
  * Use git on the command line to:
-   * clone a repository
-   * add and modify files
-   * commit and push changes
-   * understand the status and history of a repository
-   * Resolve simple merge conflicts
+   * `clone` a repository
+   * `add` and modify files
+   * `commit` and `push` changes
+   * understand the `status` and history of a repository
+   * Resolve simple `merge` conflicts
  * Collaborate effectively using git
 
-After the lab review these objectives, and ask the instructor if there are any you don't feel you can do.
+After the lab review these objectives and check in with the instructor if you still have questions.
 
 ## Set up Github repo
 
 First, one of each pair (the one with less experience in git) should set up a new repository in GitHub for you both to work in, while the other watches and helps.
 
 1. Go to https://github.com/
-2. Click on **New** to create a new repository
-3. Choose a name and add a brief description. Switch **Add README** to **On**, but leave other settings as is. Click on **Create repository**
-4. You should now be on a page for the repository (if not: did you include a README?). Select **Settings** on the top bar and **Collaborators** on the left. Click on *Add People**. Enter the git username of your partner and click **Add to repository**.
-5. Your partner should have an email invitation to join the repository. They should accept the invitation.
+2. Log in if needed (or create an account)
+3. Click on **New** to create a new repository
+4. Choose a name and add a brief description. Switch **Add README** to **On**, but leave other settings as is. Click on **Create repository**
+5. You should now be on a page for the repository (if not: did you include a README?). Select **Settings** on the top bar and **Collaborators** on the left. Click on *Add People**. Enter the git username of your partner and click **Add to repository**.
+6. Your partner should have an email invitation to join the repository. They should accept the invitation.
 
 
 ## Clone the repo locally
@@ -42,10 +43,10 @@ cd git-class
 ```
 and clone the repository you created locally, using the URL of the repository, e.g.,
 ```sh
-git clone https://github.com/*my-github-username*/*our-project*
-cd *our-project*
+git clone https://github.com/my-github-username/our-project
+cd our-project
 ```
-changing `*my-github-username*` and `*our-project*`
+changing `my-github-username` and `our-project`
 
 Open up VS Code from that directory
 ```sh
@@ -87,7 +88,7 @@ Once you've done that, run `git log` and discuss that with your partner as well.
 
 ## Pushing the changes
 
-All this work is being done on the `main` branch (that's the first line in the response to `git status`). It's best practice to do all work on separate branches and merge them in later, but we'll ignore that in this lesson. Since you will generally be doing small changes that are isolated from other work and don't affect the code, it's generally safe to make changes directly to `main`, but note in some project workflows might require all changes happen in a feature branch.
+All this work is being done on the `main` branch (that's the first line in the response to `git status`). Since you will generally be doing small changes that are isolated from other work and don't affect the code, it's generally safe to make changes directly to `main`, but note that some project workflows might require all changes to be made in a feature branch.
 
 To push the changes to the repository, do
 
@@ -148,7 +149,8 @@ Next, both of you should make changes to the same file, and add, commit, and pus
 
 Finally, make changes that overlap. As long as the changes are to different areas of the file, the `git pull` will give an error, something like
 
-```Auto-merging README.md
+```
+Auto-merging README.md
 CONFLICT (content): Merge conflict in story.md
 Automatic merge failed; fix conflicts and then commit the result.
 ```
