@@ -127,11 +127,11 @@ The first one to push will be able to successfully; the second will get an error
 
 To resolve this, you'll need to do `git pull` to bring your partner's changes to your computer. The first time you do that it might ask you about a how to reconcile divergent branches; you probably want the *merge* option (`git config pull.rebase false`) and then do `git pull` again.
 
-Assuming your changes were made it different files, the merge will get trivial. Well, mostly: it will put you in an editor where you can edit the default message, but probably you just want to save and exit. If the editor is `vim` you'll want to hit the ESC key, then type `:x`, then the return key. As you might imagine, "how do i exit vim?" is a common question on many computer forums.
+Assuming your changes were made in different files, the merge will be trivial. Well, mostly: it will put you in an editor where you can edit the default message, but probably you just want to save and exit. If the editor is `vim` you'll want to hit the ESC key, then type `:x`, then the return key. As you might imagine, "how do i exit vim?" is a common question on many computer forums.
 
 That will create a new commit that contains both changes. This "merge commit" has two parents: your previous commit and the commit that your partner created. Sometimes when doing a merge you'll have to do `git commit` explicitly, but since this is a simple merge it does it automatically.
 
-Once that is done, run `git push` to push the merged change. Your partner should to `git pull` to bring the merged change to their computer.
+Once that is done, run `git push` to push the merged change. Your partner should do `git pull` to bring the merged change to their computer.
 
 Look at `git log` again and discuss what you see. Note that this command has *many* options, for example, try
 
