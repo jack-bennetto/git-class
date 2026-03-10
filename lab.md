@@ -1,6 +1,6 @@
-# Git class
+# Introductory git assignment
 
-Welcome to Introductory Git! This is a paired assingment. Ideally it should be done in person, side by side, but can be done remotely if necessary with each person sharing their screen. More communication is better: talk with your partner about what you are doing and thinking, and reach out to the instructor if available if you're stuck. At minimum, you should make it to the beginning of the "Merge conflicts" section, but try to complete as much as you can. Feel free to play around and experiment; you really can't break anything.
+This is a paired assignment. Ideally it should be done in person, side by side, but can be done remotely if necessary with each person sharing their screen. More communication is better: talk with your partner about what you are doing and thinking, and reach out to the instructor if you're stuck. At minimum, you should make it to the beginning of the "Merge conflicts" section, but try to complete as much as you can. Feel free to play around and experiment; you really can't break anything.
 
 ## Learning objectives
 
@@ -195,8 +195,7 @@ git merge feature-foo
 ```
 This will move `main` to a new commit that contains all the changes that were made to `feature-foo`. Note you may have to resolve some conflicts.
 
-Continue to explore with your partner, looking at how all of the commands affect the repos.
-You can merge a branch into another with something
+Continue to explore with your partner, looking at how the different commands affect the repos.
 
 
 
