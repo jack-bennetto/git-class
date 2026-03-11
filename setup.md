@@ -27,6 +27,53 @@ By the end of this setup, you should have:
 - On Windows, the official Git for Windows installer is the normal place to get Git.
 - If the installer asks about a credential helper, keep the recommended Git Credential Manager option if it is already selected.
 
+### Windows — Make sure Git is on your PATH
+
+After installation you should be able to run `git --version` in a terminal. If that command fails, Git is not on your PATH and you won't be able to run `git config --global ...` from PowerShell or Command Prompt until you add it.
+
+PowerShell (quick, recommended):
+
+1. Open a new **PowerShell** window as your normal user.
+2. Run the following to add the typical Git install location to your user PATH (this persists for future sessions):
+
+```powershell
+$gitPath = 'C:\Program Files\Git\cmd'
+if (-not ($env:Path -split ';' | Where-Object { $_ -eq $gitPath })) {
+   [Environment]::SetEnvironmentVariable('Path', $env:Path + ';' + $gitPath, 'User')
+}
+```
+
+3. Close and re-open PowerShell (or sign out/in) so the updated PATH is applied. To check immediately in the reopened shell run:
+
+```powershell
+git --version
+```
+
+If you only want the change for the current shell session (temporary), run:
+
+```powershell
+$env:Path += ';C:\Program Files\Git\cmd'
+git --version
+```
+
+Manual (Windows Settings):
+
+1. Open Start → type **Environment Variables** → choose **Edit the system environment variables**.
+2. In the System Properties window click **Environment Variables...**.
+3. Under **User variables for [user.name]** select the `Path` variable and click **Edit...**.
+4. Click **New** and add the path `C:\Program Files\Git\cmd` (or the folder where you installed Git).
+5. Click **OK** on all dialogs, then close and re-open your terminal and run `git --version` to verify.
+
+Notes:
+
+- Typical Git install locations are `C:\Program Files\Git\cmd` or `C:\Program Files\Git\bin` depending on installer options. Use the one that exists on your machine.
+- After verifying `git --version` works, set your identity for commits (required for this lab):
+
+```powershell
+git config --global user.name "Your Name"
+git config --global user.email "you@company.com"
+```
+
 Official references:
 
 - [Git for Windows install page](https://git-scm.com/install/windows)
