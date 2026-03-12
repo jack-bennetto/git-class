@@ -4,7 +4,7 @@ This is a paired assignment. Ideally it should be done in person, side by side, 
 
 ## Learning objectives
 
-You should have already watched the video that goes with this lab. While it isn't completely necessary, it should help you understand some of the yet concepts around git and version control.
+You should have already watched the video that goes with this lab. While it isn't completely necessary, it should help you understand some of the key concepts around git and version control.
 
 After watching the video and completing this lab, you should be able to
 
@@ -20,7 +20,7 @@ After watching the video and completing this lab, you should be able to
 
 After the lab review these objectives and check in with the instructor if you still have questions.
 
-## Set up Github repo
+## Set up GitHub repo
 
 First, one of each pair (the one with less experience in git) should set up a new repository in GitHub for you both to work in, while the other watches and helps.
 
@@ -28,7 +28,7 @@ First, one of each pair (the one with less experience in git) should set up a ne
 2. Log in if needed (or create an account)
 3. Click on **New** to create a new repository
 4. Choose a name and add a brief description. Switch **Add README** to **On**, but leave other settings as is. Click on **Create repository**
-5. You should now be on a page for the repository (if not: did you include a README?). Select **Settings** on the top bar and **Collaborators** on the left. Click on *Add People**. Enter the git username of your partner and click **Add to repository**.
+5. You should now be on a page for the repository (if not: did you include a README?). Select **Settings** on the top bar and **Collaborators** on the left. Click on **Add People**. Enter the git username of your partner and click **Add to repository**.
 6. Your partner should have an email invitation to join the repository. They should accept the invitation.
 
 
@@ -53,6 +53,8 @@ Open up VS Code from that directory
 code .
 ```
 
+to open VS Code in that directory. If that doesn't work, open VS Code and open the folder from the application.
+
 You'll be using the terminal quite a bit in this assignment. You can either use your existing window, or open a terminal within VSCode from the View -> Terminal menu.
 
 ## A first commit
@@ -64,14 +66,14 @@ git status
 ```
 in the terminal. This is *the most frequent command* you should run; do this after every other command. Discuss what the output means with your partner.
 
-You're going to start by writing a story together. One of you should create a directory in the repo called `stories` and creat a story in that directory called `story.md`. Type in the beginning of a story, either a work item or (if you're feeling creative) a fairy tale, and save it.
+You're going to start by writing a story together. One of you should create a directory in the repo called `stories` and create a story in that directory called `story.md`. Type in the beginning of a story, either a work item or (if you're feeling creative) a fairy tale, and save it.
 
 Enter `git status` again. Discuss with your partner what has changed.
 
 To **stage** the change (sometimes referred to as "adding it to the **index**") run
 
 ```sh
-git add story.md
+git add stories/story.md
 ```
 Now run `git status` again and discuss what you see with your partner.
 
@@ -88,7 +90,7 @@ Once you've done that, run `git log` and discuss that with your partner as well.
 
 ## Pushing the changes
 
-All this work is being done on the `main` branch (that's the first line in the response to `git status`). Since you will generally be doing small changes that are isolated from other work and don't affect the code, it's generally safe to make changes directly to `main`, but note that some project workflows might require all changes to be made in a feature branch.
+All this work is being done on the `main` branch (that's the first line in the response to `git status`). We're starting simple for now by having you push directly to `main` on a real project users generally push to a feature branch. We'll talk about that a bit at the end of the assignment.
 
 To push the changes to the repository, do
 
@@ -121,11 +123,11 @@ Repeat this exercise a few more times each until you are both comfortable. As yo
 
 ## Merge conflicts
 
-So far we've been conflict avoidant, having each person pull changes before making their own. This time, both of you make should make changes at the same time. The two of you should make changes to different files (to make it easier this first time), add, commit, and push them.
+So far we've been conflict avoidant, having each person pull changes before making their own. This time, both of you should make changes at the same time. The two of you should make changes to different files (to make it easier this first time), add, commit, and push them.
 
 The first one to push will be able to successfully; the second will get an error.
 
-To resolve this, you'll need to do `git pull` to bring your partner's changes to your computer. The first time you do that it might ask you about a how to reconcile divergent branches; you probably want the *merge* option (`git config pull.rebase false`) and then do `git pull` again.
+To resolve this, you'll need to do `git pull` to bring your partner's changes to your computer. The first time you do that it might ask you about how to reconcile divergent branches; you probably want the *merge* option (`git config pull.rebase false`) and then do `git pull` again.
 
 Assuming your changes were made in different files, the merge will be trivial. Well, mostly: it will put you in an editor where you can edit the default message, but probably you just want to save and exit. If the editor is `vim` you'll want to hit the ESC key, then type `:x`, then the return key. As you might imagine, "how do i exit vim?" is a common question on many computer forums.
 
@@ -147,10 +149,10 @@ Repeat this in the other order, so your partner has to do a merge.
 
 Next, both of you should make changes to the same file, and add, commit, and push the changes. For the first attempt, make them to different areas of the file, but have the other person push first so you can both practice. The experience should be the same, and it should merge the changes automatically.
 
-Finally, make changes that overlap. As long as the changes are to different areas of the file, the `git pull` will give an error, something like
+Finally, make changes that overlap. In this case `git pull` should give an error, something like
 
 ```
-Auto-merging README.md
+Auto-merging story.md
 CONFLICT (content): Merge conflict in story.md
 Automatic merge failed; fix conflicts and then commit the result.
 ```
