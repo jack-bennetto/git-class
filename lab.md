@@ -1,203 +1,375 @@
 # Introductory git assignment
 
-This is a paired assignment. Ideally it should be done in person, side by side, but can be done remotely if necessary with each person sharing their screen. More communication is better: talk with your partner about what you are doing and thinking, and reach out to the instructor if you're stuck. At minimum, you should make it to the beginning of the "Merge conflicts" section, but try to complete as much as you can. Feel free to play around and experiment; you really can't break anything.
+This is a paired assignment. Ideally, do it in person, side by side, but it can also be done remotely if needed, with each person sharing their screen.
+
+Communicate with your partner as you work: talk about what you are doing, what you expect to happen, and what actually happens. If you get stuck, reach out to the instructor.
+
+At minimum, you should make it to the beginning of the **Merge conflicts** section, but try to complete as much as you can.
+
+Feel free to experiment. You are very unlikely to break anything in a serious way.
 
 ## Learning objectives
 
-You should have already watched the video that goes with this lab. While it isn't completely necessary, it should help you understand some of the key concepts around git and version control.
+You should already have watched the video that goes with this lab. It is not strictly required, but it should help you understand some of the key concepts around git and version control.
 
-After watching the video and completing this lab, you should be able to
+After watching the video and completing this lab, you should be able to:
 
- * Explain the purpose of git, its role in collaborative development and how it relates to GitHub
- * Define the basic concepts in git, including **repository**, **commit**, **index**, **merge**, and **branch**
- * Use git on the command line to:
-   * `clone` a repository
-   * `add` and modify files
-   * `commit` and `push` changes
-   * understand the `status` and history of a repository
-   * Resolve simple `merge` conflicts
- * Collaborate effectively using git
+- Explain the purpose of git, its role in collaborative development, and how it relates to GitHub
+- Define basic git concepts, including **repository**, **commit**, **index**, **merge**, and **branch**
+- Use git on the command line to:
+  - `clone` a repository
+  - `add` and modify files
+  - `commit` and `push` changes
+  - understand the `status` and history of a repository
+  - resolve simple `merge` conflicts
+- Collaborate effectively using git with another person
 
-After the lab review these objectives and check in with the instructor if you still have questions.
+After the lab, review these objectives and check in with the instructor if you still have questions.
 
-## Set up GitHub repo
+## Set up a GitHub repo
 
-First, one of each pair (the one with less experience in git) should set up a new repository in GitHub for you both to work in, while the other watches and helps.
+First, one person in the pair (ideally the one with less git experience) should create a new repository in GitHub for both of you to use, while the other person watches and helps.
 
-1. Go to https://github.com/
-2. Log in if needed (or create an account)
-3. Click on **New** to create a new repository
-4. Choose a name and add a brief description. Switch **Add README** to **On**, but leave other settings as is. Click on **Create repository**
-5. You should now be on a page for the repository (if not: did you include a README?). Select **Settings** on the top bar and **Collaborators** on the left. Click on **Add People**. Enter the git username of your partner and click **Add to repository**.
-6. Your partner should have an email invitation to join the repository. They should accept the invitation.
+1. Go to `https://github.com/`
+2. Log in if needed, or create an account
+3. Click **New** to create a new repository
+4. Choose a name and add a brief description
+5. Turn **Add README** to **On**
+6. Leave the other settings as they are, then click **Create repository**
 
+You should now be on the repository page.
+
+Next, invite your partner:
+
+1. Click **Settings** near the top of the repository page
+2. Click **Collaborators** (or **Collaborators and teams**) on the left
+3. Click **Add people**
+4. Enter your partner's GitHub username
+5. Click **Add to repository**
+
+Your partner should receive an invitation and accept it.
 
 ## Clone the repo locally
 
-Both of you should clone the repo onto your local computer. You will both make changes locally and push to the remote repo on GitHub.
+Both of you should now clone the repository onto your own computer.
 
-To do this, open a terminal on your computer and create and go to an appropriate directory under your home directory, e.g.
+Open a terminal and make a folder for this class somewhere under your home directory, for example:
+
 ```sh
 mkdir git-class
 cd git-class
 ```
-and clone the repository you created locally, using the URL of the repository, e.g.,
+
+Now clone the repository:
+
 ```sh
 git clone https://github.com/my-github-username/our-project
 cd our-project
 ```
-changing `my-github-username` and `our-project`
 
-Open up VS Code from that directory
+Replace `my-github-username` and `our-project` with the actual values for your repository.
+
+Now open the folder in VS Code:
+
 ```sh
 code .
 ```
 
-to open VS Code in that directory. If that doesn't work, open VS Code and open the folder from the application.
+If `code .` does not work, just open VS Code normally and use **File → Open Folder** to open the repository folder.
 
-You'll be using the terminal quite a bit in this assignment. You can either use your existing window, or open a terminal within VSCode from the View -> Terminal menu.
+You will be using the terminal a lot in this assignment. You can keep using your current terminal window, or open a terminal inside VS Code with **View → Terminal**.
 
 ## A first commit
 
-Both of you should enter
+Both of you should run:
 
 ```sh
 git status
 ```
-in the terminal. This is *the most frequent command* you should run; do this after every other command. Discuss what the output means with your partner.
 
-You're going to start by writing a story together. One of you should create a directory in the repo called `stories` and create a story in that directory called `story.md`. Type in the beginning of a story, either a work item or (if you're feeling creative) a fairy tale, and save it.
+This is one of the most important git commands. You should get in the habit of running it frequently.
 
-Enter `git status` again. Discuss with your partner what has changed.
+Discuss with your partner what the output means.
 
-To **stage** the change (sometimes referred to as "adding it to the **index**") run
+You are going to start by writing a story together.
+
+One of you should:
+
+1. Create a directory in the repo called `stories`
+2. Create a file in that directory called `story.md`
+3. Type the beginning of a story into that file and save it
+
+This can be a work item, or, if you are feeling creative, a fairy tale.
+
+Now run:
+
+```sh
+git status
+```
+
+Discuss with your partner what changed.
+
+To **stage** the file (sometimes called “adding it to the **index**”), run:
 
 ```sh
 git add stories/story.md
 ```
-Now run `git status` again and discuss what you see with your partner.
 
-To commit the change and give it a description, run
+Now run `git status` again and discuss what you see.
+
+To commit the change and give it a description, run:
 
 ```sh
-git commit -m "added an initial story"
+git commit -m "Add initial story"
 ```
-Note that if you forget the `-m` git will open a text editor you might not understand for you to write your commit message. Try to avoid that.
 
-You ran `git status` and discussed it with your partner, right? I'm going to trust you to remember it from now on.
+If you forget the `-m`, git will open a text editor so you can write the commit message there. That is fine, but it may be confusing the first time.
 
-Once you've done that, run `git log` and discuss that with your partner as well.
+Now run:
+
+```sh
+git status
+git log
+```
+
+Discuss both outputs with your partner.
 
 ## Pushing the changes
 
-All this work is being done on the `main` branch (that's the first line in the response to `git status`). We're starting simple for now by having you push directly to `main` on a real project users generally push to a feature branch. We'll talk about that a bit at the end of the assignment.
+All of this work is happening on the `main` branch. You can see that in the output of `git status`.
 
-To push the changes to the repository, do
+For this lab, we are working directly on `main` to keep things simple. In many real projects, people use feature branches and pull requests instead.
+
+Now push your change to GitHub:
 
 ```sh
 git push
 ```
 
-If you haven't used git before, it might ask you for a username; use your GitHub username. For a password, you'll need to create a PAT (personal access token).  Go back to the GitHub browser, click on your picture on the top right and go to **Settings**. Click on **Developer settings** (at the bottom) and then **Personal access tokens**, **Tokens (classic)** and click **Generate new token**. Click on **repo** to give it full repo permissions and have it generate the token. Copy the token into the terminal as the password.
+The first time you do this, git may ask you to sign in to GitHub. On many Windows setups, this should open a browser window and let you sign in there.
 
-You can save the token in a file for future use as needed.
+If it asks for credentials in the terminal and you are unsure what to do, ask the instructor for help rather than guessing.
 
-**DO NOT ADD THIS FILE TO A GIT REPO UNDER ANY CIRCUMSTANCES**
-
-Your partner should then do
+Once the push succeeds, your partner should run:
 
 ```sh
 git pull
 ```
-to see your changes. Compare your results from `git status` and `git log`.
+
+They should now be able to see your changes.
+
+Compare your results from:
+
+```sh
+git status
+git log
+```
 
 ## Repeat
 
-Your partner should then go through the same exercise, updating `story.md` (adding a new line to the story) the first person created, adding, committing, and pushing it, and having the other person pull the changes. Note that `git add` is the same command for adding a new file to a repo or changing an existing one.
+Now switch roles.
 
-Repeat this exercise a few more times each until you are both comfortable. As you do this:
+Your partner should update `stories/story.md` by adding another line to the story, then:
 
- * Add another story file and push that as well. Note that you can have changes to multiple files in a single commit, and you can do multiple commits between pushes.
- * Add some Markdown tags. Lines starting with a hash (`#`) symbol show up as a large header; multiple hashes show up as smaller headers. Look at the files in the GitHub browser to confirm. If you're interested, read more about Markdown.
- * Try unstaging a change after you ran `git add` (as described in the output of `git status`). These messages are often useful.
+- `git add`
+- `git commit`
+- `git push`
+
+The other partner should then run `git pull`.
+
+Repeat this process a few more times until both of you are comfortable.
+
+As you do this, try the following:
+
+- Add another story file and push that as well
+- Notice that one commit can include changes to more than one file
+- Notice that you can make multiple commits before pushing
+- Add some Markdown formatting:
+  - A line starting with `#` becomes a large heading
+  - Lines starting with `##` become smaller headings
+- Look at the files in the GitHub browser to confirm what Markdown looks like there
+- Try **unstaging** a change after running `git add` by following the instructions shown in `git status`
+
+The messages in `git status` are often very helpful.
 
 ## Merge conflicts
 
-So far we've been conflict avoidant, having each person pull changes before making their own. This time, both of you should make changes at the same time. The two of you should make changes to different files (to make it easier this first time), add, commit, and push them.
+So far, you have mostly been avoiding conflicts by pulling before making new changes.
 
-The first one to push will be able to successfully; the second will get an error.
+This time, both of you should make changes at the same time.
 
-To resolve this, you'll need to do `git pull` to bring your partner's changes to your computer. The first time you do that it might ask you about how to reconcile divergent branches; you probably want the *merge* option (`git config pull.rebase false`) and then do `git pull` again.
+For the first round, make changes to **different files** so it is easier.
 
-Assuming your changes were made in different files, the merge will be trivial. Well, mostly: it will put you in an editor where you can edit the default message, but probably you just want to save and exit. If the editor is `vim` you'll want to hit the ESC key, then type `:x`, then the return key. As you might imagine, "how do i exit vim?" is a common question on many computer forums.
+Each of you should:
 
-That will create a new commit that contains both changes. This "merge commit" has two parents: your previous commit and the commit that your partner created. Sometimes when doing a merge you'll have to do `git commit` explicitly, but since this is a simple merge it does it automatically.
+1. Edit a file
+2. Run `git add`
+3. Run `git commit`
+4. Run `git push`
 
-Once that is done, run `git push` to push the merged change. Your partner should do `git pull` to bring the merged change to their computer.
+The first person to push will probably succeed.
 
-Look at `git log` again and discuss what you see. Note that this command has *many* options, for example, try
+The second person will probably get an error saying that their branch is behind the remote one.
+
+When that second person runs `git pull`, git may stop and ask them to choose how to reconcile the divergent branches. This happens because both people have made new commits, so git wants you to say whether future pulls should usually make a merge commit or instead rebase local commits.
+
+For this lab, set git to use merging on pull:
 
 ```sh
+git config pull.rebase false
+git pull
+```
+
+The config command tells git that when `git pull` has to combine local and remote work, it should do that by **merging** rather than **rebasing**. That is simpler for this lab, because it preserves the history in a way that is easier to see and discuss.
+
+If your changes were in different files, the merge should be simple. Git may open an editor for a merge commit message. Usually you can just save and exit.
+
+If the editor is `vim`, press:
+
+1. `Esc`
+2. type `:x`
+3. press Enter
+
+This creates a new **merge commit** that combines both lines of work.
+
+Now run:
+
+```sh
+git push
+```
+
+Your partner should then run:
+
+```sh
+git pull
+```
+
+Look at the history again and discuss what you see:
+
+```sh
+git log
 git log --oneline --graph
 ```
 
-Finally, go to the repository on GitHub, click on the "Commits" button, and look at the results.
+Then go to the repository on GitHub, click the **Commits** link, and compare what you see there.
 
-Repeat this in the other order, so your partner has to do a merge.
+Repeat the exercise in the other order so that the other partner has to do the merge.
 
 ## Changes to the same file
 
-Next, both of you should make changes to the same file, and add, commit, and push the changes. For the first attempt, make them to different areas of the file, but have the other person push first so you can both practice. The experience should be the same, and it should merge the changes automatically.
+Next, both of you should make changes to the **same file**.
 
-Finally, make changes that overlap. In this case `git pull` should give an error, something like
+### First: different parts of the same file
 
+For the first attempt, make changes to **different parts** of the file.
+
+Then have one person push first. The second person should again run:
+
+```sh
+git pull
 ```
+
+Because the changes are in different parts of the file, git will usually merge them automatically.
+
+### Then: overlapping changes
+
+Now both of you should edit the **same part** of the file so that the changes overlap.
+
+Again, have one person push first. When the second person runs:
+
+```sh
+git pull
+```
+
+git should report a conflict, something like:
+
+```text
 Auto-merging story.md
 CONFLICT (content): Merge conflict in story.md
 Automatic merge failed; fix conflicts and then commit the result.
 ```
-You looked at the result of `git status`, right? You'll need to fix the conflict manually and run `git add` on that file, and `git commit` again. If you're confused on this look at the message in `git status`. Git has added a bunch of stuff to the file showing the changes; if you open it up in VS Code it should help you with the merging.
 
+Now run:
+
+```sh
+git status
+```
+
+Read what it says carefully.
+
+Git will have added conflict markers into the file. If you open the file in VS Code, it should help you choose how to resolve them.
+
+After you fix the file, run:
+
+```sh
+git add stories/story.md
+git commit
+git push
+```
+
+If you are confused, read the message from `git status` carefully; it often tells you exactly what to do next.
 
 ## Optional: branches
 
-If you have time, you should experiment with branches. To create a branch, do something like
+If you have time, experiment with branches.
 
-`git branch feature-foo`
+Create a branch:
 
-You can switch to that branch with
-
-`git switch feature-foo`
-
-and switch back to `main` with
-
-`git switch main`
-
-If you look at `git log` you'll notice they are both pointing to the same commit. If you add a new commit from one of those branches, it will affect one and not the other. Verify all this with `git status`, `git log`, and `git log --oneline --graph`.
-
-If you push a branch for the first time you'll get a message like
-
-```
-fatal: The current branch foo has no upstream branch.
-To push the current branch and set the remote as upstream, use
-
-    git push --set-upstream origin feature-foo
-
-To have this happen automatically for branches without a tracking
-upstream, see 'push.autoSetupRemote' in 'git help config'.
+```sh
+git branch feature-foo
 ```
 
-Do what it tells you to do.
+Switch to it:
 
-To merge branch `feature-foo` into `main` do
-
+```sh
+git switch feature-foo
 ```
+
+Switch back to `main`:
+
+```sh
+git switch main
+```
+
+If you look at `git log`, you should see that both branches are initially pointing to the same commit.
+
+Now make a commit while on `feature-foo`. That commit should affect `feature-foo` but not `main`.
+
+Use these commands to investigate:
+
+```sh
+git status
+git log
+git log --oneline --graph
+```
+
+If you push a branch for the first time, git may tell you to set an upstream branch. Do what it says, for example:
+
+```sh
+git push --set-upstream origin feature-foo
+```
+
+To merge `feature-foo` into `main`, do:
+
+```sh
 git switch main
 git merge feature-foo
 ```
-This will move `main` to a new commit that contains all the changes that were made to `feature-foo`. Note you may have to resolve some conflicts.
 
-Continue to explore with your partner, looking at how the different commands affect the repos.
+This will move `main` forward to include the changes from `feature-foo`.
 
+You may need to resolve conflicts if both branches changed the same lines.
 
+## Continue exploring
 
+Continue experimenting with your partner.
+
+As you do, keep checking:
+
+```sh
+git status
+git log
+git log --oneline --graph
+```
+
+Pay attention to how each command changes your local repository and what appears on GitHub.
